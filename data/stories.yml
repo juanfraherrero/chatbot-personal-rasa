@@ -1,0 +1,85 @@
+version: "3.1"
+
+stories:
+
+#path de goodbye
+- story: goodbye_path
+  steps:
+  - intent: goodbye
+  - slot_was_set: 
+      - name: not null
+  - action: utter_goodbye
+
+- story: goodbye_no_name_path
+  steps:
+  - intent: goodbye
+  - slot_was_set:
+      - name: null
+  - action: utter_goodbye_no_name
+
+#agradece
+- story: agradece_path
+  steps:
+  - intent: agradece
+  - slot_was_set: 
+      - name: not null
+  - action: utter_agradece
+
+- story: agradece_no_name_path
+  steps:
+  - intent: agradece
+  - slot_was_set:  
+      - name: null
+  - action: utter_agradece_no_name
+
+#path de saludos
+- story: saludo_sin_nombre_path
+  steps:
+  - intent: saludar_sin_nombre
+  - action: utter_pedir_nombre
+  - intent: dar_nombre
+  - action: utter_que_necesita
+
+- story: saludo_con_nombre_path
+  steps:
+  - intent: saludar_con_nombre
+  - action: utter_que_necesita
+
+#paths de consultas
+- story: consultar_cantidad_materia_carrera_path
+  steps:
+  - intent: consultar_cantidad_materias_carrera
+  - action: action_consultar_cantidad_materias_carrera
+
+- story: consultar_legajo_path
+  steps:
+  - intent: consultar_legajo
+  - action: action_consultar_legajo
+
+- story: consultar_dni_path
+  steps:
+  - intent: consultar_dni
+  - action: action_consultar_dni
+
+- story: consultar_materias_aprobadas_path
+  steps:
+  - intent: consultar_materias_aprobadas
+  - action: action_consultar_materias_aprobadas
+
+- story: consultar_materias_restantes_path
+  steps:
+  - intent: consultar_materias_restantes
+  - action: action_consultar_materias_restantes
+
+- story: consultar_materias_de_anio_path
+  steps:
+  - intent: consultar_materias_de_anio
+  - action: action_consultar_materias_de_anio
+
+- story: consultar_mis_gustos
+  steps:
+  - intent: consultar_gustos
+  - action: action_consultar_gustos
+
+
+  

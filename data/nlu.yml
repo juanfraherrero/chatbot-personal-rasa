@@ -1,0 +1,118 @@
+version: "3.1"
+
+nlu:
+#despedida
+- intent: goodbye
+  examples: | 
+    - chau
+    - nos vemos
+    - adios
+    - saludos
+
+#agradece
+- intent: agradece
+  examples: |
+    - muchas gracias
+    - gracias
+    - joya
+    - genial
+    - perfecto
+
+#saludos
+- intent: saludar_sin_nombre
+  examples: |
+    - hola
+    - buenas 
+    - hola buenas
+    - que haces?
+    - todo bien? 
+    - que andas haciendo?
+  
+- intent: dar_nombre
+  examples: |
+    - soy [analia](name)
+    - mi nombre es [juan](name)
+    - nombre igual a [francisco](name)
+    - me dicen [Pedor](name)
+    - jajajaj mi nombre es [jorge](name) 
+    - jajajja soy [analia](name)
+
+- intent: saludar_con_nombre
+  examples: |
+    - hola , soy [Analia](name)
+    - buenas, soy [juan](name)
+    - hola buenas, soy [francisco](name)
+    - soy [Pedro](name) 
+    - me llamo [Jorge](name) 
+    - que haces, me llamo [Analia](name)
+
+- regex: name
+  examples: |   
+    - [a-z]{1,15}
+
+#consultas
+- intent: consultar_cantidad_materias_carrera
+  examples: |
+    - cuantas materias tiene tu carrera?
+    - cuantas materias tenes en tu carrera?
+    - cuantas materias tenes?
+    - que cantidad de materias tenes?
+    - cantidad de materias por año?
+
+- intent: consultar_legajo
+  examples: |
+    - cual es tu legajo?
+    - que legajo tenes?
+    - me darías tu legajo?
+    - pasame tu legajo porfavor
+    - necesito tu legajo
+
+- intent: consultar_dni
+  examples: |
+    - cual es tu dni?
+    - que dni tenes?
+    - me darías tu dni?
+    - pasame tu dni porfavor
+    - necesito tu dni
+
+- intent: consultar_materias_aprobadas
+  examples: |
+    - cuales materias aprobaste?
+    - que materias tenes aprobadas?
+    - que materias rendiste hasta ahora?
+    - materias rendidas?
+    - materias aprobadas?
+    - que materias ya las diste?
+
+- intent: consultar_materias_restantes  
+  examples: |
+    - cuales materias te quedan?
+    - que materias te quedan?
+    - cuales materias te faltan dar?
+    - que materias te faltan dar?
+    - que  materias te restan?
+    - materias que te quedan?
+
+- intent: consultar_materias_de_anio  
+  examples: |
+    - cuales materias tenes en [1](anio)?
+    - que materias cursas en [2](anio)?
+    - decime las materias que cursas en [3](anio)?
+    - tirame las materias de [4](anio)?
+    - contame las materias de [5](anio)?
+
+- regex: anio
+  examples: |   
+    - [1-5]{1}
+
+- intent: consultar_gustos    
+  examples: |
+    - te gusta [programacion](gusto)
+    - te gusta [programar](gusto)
+    - a vos te gusta [ia](gusto)
+    - a vos te gusta la [ia](gusto)
+    - te copa la [matematica](gusto)
+    - sos de las personas a las que le gusta [socializar](gusto)
+    - vos sos de [hablar](gusto)
+    - te copa [dirigir](gusto)
+    - te gusta [comer](gusto)

@@ -1,0 +1,3 @@
+falta ver que reconozca el anio cuando consultamos por que materias tengo en tal año.
+
+conectar con prolog.

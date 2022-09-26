@@ -1,0 +1,10 @@
+{   
+    "datosPersonales": {
+        "nombre": "juan",
+        "apellido": "Herreo",
+        "edad": 30,
+        "dni":12345678,
+        "legajo": 123456,
+        "gustos":["programar","leer","dormir","comer", "ia", "socializar","hablar"]
+    }
+}
