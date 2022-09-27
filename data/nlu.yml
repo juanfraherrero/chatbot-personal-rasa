@@ -105,14 +105,46 @@ nlu:
   examples: |   
     - [1-5]{1}
 
-- intent: consultar_gustos    
+- intent: consultar_gusta_materia    
   examples: |
-    - te gusta [programacion](gusto)
-    - te gusta [programar](gusto)
-    - a vos te gusta [ia](gusto)
-    - a vos te gusta la [ia](gusto)
-    - te copa la [matematica](gusto)
-    - sos de las personas a las que le gusta [socializar](gusto)
-    - vos sos de [hablar](gusto)
-    - te copa [dirigir](gusto)
-    - te gusta [comer](gusto)
+    - te gusta [introduccion a la programacion 1](materia)
+    - te gusta algebra 1
+    - a vos te gusta quimica
+    - te copa analisis matematico 1
+
+- lookup: materia
+  examples: |
+    - introduccion a la programacion 1
+    - analisis matematico 1
+    - algebra 1
+    - quimica
+    - ciencias de la computacion 1
+    - introduccion a la programacion 2
+    - algebra lineal
+    - fisica general
+    - matematica discreta
+    - ciencias de la computacion 2
+    - analisis y diseño de algoritmos 1
+    - introduccion a la arquitectura de sistemas
+    - analisis matematico 2
+    - electricidad y magnetismo
+    - analisis y diseño de algoritmos 2
+    - comunicacion de datos 1
+    - probabilidad y estadistica
+    - electronica digital
+    - programacion orientada a objetos
+    - estructura de alamcenamiento de datos
+    - metodologias de desarrollo de software
+    - arquitectura de computadoras
+    - programacion exploratoria
+    - base de datos
+    - lenguajes de programacion
+    - sistemas operativos
+    - investigacion operativa
+    - arquitectura de computadores y tecnicas digitales
+    - teoria de la informacion
+    - comunicacion de datos 2
+    - introduccion al calculo diferencial e integral
+    - diseño de sistemas de software
+    - diseño de compiladores
+    - ingenieria de software

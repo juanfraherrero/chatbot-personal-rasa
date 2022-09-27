@@ -76,10 +76,10 @@ stories:
   - intent: consultar_materias_de_anio
   - action: action_consultar_materias_de_anio
 
-- story: consultar_mis_gustos
+- story: consultar_gusta_materia_path
   steps:
   - intent: consultar_gustos
-  - action: action_consultar_gustos
+  - action: action_consultar_gusta_materia
 
 
   

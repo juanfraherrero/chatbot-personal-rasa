@@ -148,37 +148,31 @@ class Action_consultar_materias_de_anio(Action): # listo
         dispatcher.utter_message(text="estas son todas las materias de la carrera")
         return []
 
-class Action_consultar_gustos(Action): # listo con arcihvo extero json, no puedo con prolog
+class Action_consultar_gusta_materia(Action): # 
 
     def name(self) -> Text:
-        return "action_consultar_gustos"
+        return "action_consultar_gusta_materia"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        gusto = next(tracker.get_latest_entity_values("gusto"), None) #si no encuentra el valor, devuelve None
-        print("la entidad es : " + str(gusto))
-        # if gusto :
-        #     if gusto in OperarArchivo.cargarArchivo()["datosPersonales"]["gustos"]:
-        #         dispatcher.utter_message(text =f"sisi, me gusta {gusto}")
-        #     else:
-        #         dispatcher.utter_message(text =f"nop, no me gusta {gusto}")
-        # else:
-        #     dispatcher.utter_message(text =f"no tengo idea que es eso, disculpame")
-        print(f"le_gusta(juan,{gusto}).")
-        with PrologMQI(port=8000) as mqi:
-            with mqi.create_thread() as prolog_thread:
-                if (gusto):
-                    prolog_thread.query_async("consult('/home/juan/Documentos/AAUniversidad/3Tercero/9-ProgramacionExploratoria/rasaProject/personal-bot/data/conocimiento_mis_materias.pl').", find_all=False)
-                    prolog_thread.query_async(f"le_gusta(juan,{gusto}).", find_all=False)
-                    result = prolog_thread.query_async_result()
+        materia = tracker.get_slot("materia")
+        print("la entidad es : " + str(materia))
+        if (materia):
+            try:
+                materiaNew = OperarArchivo.cargarArchivo()["tranformacionesDeNombresMaterias"][materia.lower()]
+                with PrologMQI(port=8000) as mqi:
+                    with mqi.create_thread() as prolog_thread:
+                        prolog_thread.query_async("consult('/home/juan/Documentos/AAUniversidad/3Tercero/9-ProgramacionExploratoria/rasaProject/personal-bot/data/conocimiento_mis_materias.pl').", find_all=False)
+                        prolog_thread.query_async(f"le_gusta_materia_nombre(\"{materiaNew}\").", find_all=False)
+                        result = prolog_thread.query_async_result()
+                        if (result == True):
+                            dispatcher.utter_message(text=f"sisi, me gusta {materia}")
+                        else:
+                            dispatcher.utter_message(text=f"nop, no me gusta {materia}")
+            except:
+                dispatcher.utter_message(text=f"{materia} no es de Ingeniearia de Sistemas, si querés preguntame por otra materia")
+        else:
+            dispatcher.utter_message(text=f"jajajja no te entendí, cómo?")
 
-                    #print("el resultado es " + str(result))
-                    print(f"le gusta {gusto}:" + str(result))  
-                    if (result == True):
-                        dispatcher.utter_message(text=f"sisi, me gusta {gusto}")
-                    else:
-                        dispatcher.utter_message(text=f"nop, no me gusta")
-                else:
-                    dispatcher.utter_message(text=f"jajajja no te entendí, cómo?")
         return []

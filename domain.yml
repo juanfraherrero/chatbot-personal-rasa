@@ -11,7 +11,7 @@ intents:
   - consultar_materias_aprobadas
   - consultar_materias_restantes
   - consultar_materias_de_anio
-  - consultar_gustos
+  - consultar_gusta_materia
 
 actions:
   - action_consultar_cantidad_materias_carrera
@@ -20,12 +20,13 @@ actions:
   - action_consultar_materias_aprobadas
   - action_consultar_materias_restantes
   - action_consultar_materias_de_anio
-  - action_consultar_gustos
+  - action_consultar_gusta_materia
 
 entities:
   - name
   - anio
-  - gusto
+  - materia
+
 slots:
   name:
     type: text
@@ -37,9 +38,17 @@ slots:
     mappings:
     - type: from_entity
       entity: anio
+  materia:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: materia
 
 #verificar si funciona
 responses:
+  utter_please_rephrase:
+  - text: "No te entendí, podés repetirlo de otra manera?"
+
   utter_goodbye:
   - text: "nos vemos {name}"
   - text: "chau chau {name}"

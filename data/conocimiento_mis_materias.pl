@@ -1,39 +1,39 @@
 %Materias|codigo | nombre | cuatrimestre | año | aprobada
-materias(6111,'Introducción a la Programación 1',1,1,1).
-materias(6112,'Análisis Matemático 1',1,1,1).
-materias(6113, "Algebra I.", 1, 1, 1).
-materias(6114, "Quimica.", 1, 1, 1).
-materias(6121, "Ciencias de la Computacion I.", 2, 1, 1).
-materias(6122, "Introduccion a la Programacion II.", 2, 1. 1).
-materias(6123, "Algebra Lineal.", 2, 1, 1).
-materias(6124, "Fisica General.", 2, 1, 1).
-materias(6125, "Matematica Discreta.", 2, 1, 1).
-materias(6211, "Ciencias de la Computacion II.", 1, 2, 1).
-materias(6212, "Analisis y Diseño de Algoritmos I.", 1, 2, 1).
-materias(6213, "Introduccion a la Arquitectura de Sistemas.", 1, 2, 1).
-materias(6214, "Analisis Matematico II.", 1, 2, 1).
-materias(6215, "Electricidad y Magnetismo.", 1, 2, 1).
-materias(6221, "Analisis y Diseño de Algoritmos II.", 2, 2, 1).
-materias(6222, "Comunicacion de Datos I.", 2, 2, 1).
-materias(6223, "Probabilidades y Estadistica.", 2, 2, 1).
-materias(6224, "Electronica Digital.", 2, 2, 1).
-materias(6225, "Ingles.", 2, 2, 1).
-materias(6311, "Programacion Orientada a Objetos.", 1, 3, 1).
-materias(6312, "Estructuras de Almacenamiento de Datos.", 1, 3, 1).
-materias(6313, "Metodologias de Desarrollo de Software I.", 1, 3, 1).
-materias(6314, "Arquitectura de Computadoras I.", 1, 3, 1).
-materias(6321, "Programacion Exploratoria.", 2, 3, 0).
-materias(6322, "Base de Datos I.", 2, 3, 0).
-materias(6323, "Lenguajes de Programacion I.", 2, 3, 0).
-materias(6324, "Sistemas Operativos I.", 2, 3, 0).
-materias(6325, "Investigacion Operativa I.", 2, 3, 0).
-materias(6411, "Arquitectura de Computadoras y Tecnicas Digitales.", 1, 4, 0).
-materias(6412, "Teoria de la Informacion.", 1, 4, 0).
-materias(6413, "Comunicacion de Datos II.", 1, 4, 0).
-materias(6414, "Introduccion al Calculo Diferencial e Integral.", 1, 4, 1).
-materias(6421, "Diseño de Sistemas de Software.", 2, 4, 0).
-materias(6422, "Diseño de Compiladores. I", 2, 4, 0).
-materias(6511, "Ingenieria de Software.", 1, 5, 0).
+materias(6111,"Introduccion a la Programacion 1",1,1,1).
+materias(6112,"Analisis Matematico 1",1,1,1).
+materias(6113, "Algebra 1", 1, 1, 1).
+materias(6114, "Quimica", 1, 1, 1).
+materias(6121, "Ciencias de la Computacion 1", 2, 1, 1).
+materias(6122, "Introduccion a la Programacion 2", 2, 1. 1).
+materias(6123, "Algebra Lineal", 2, 1, 1).
+materias(6124, "Fisica General", 2, 1, 1).
+materias(6125, "Matematica Discreta", 2, 1, 1).
+materias(6211, "Ciencias de la Computacion 2", 1, 2, 1).
+materias(6212, "Analisis y Diseño de Algoritmos 1", 1, 2, 1).
+materias(6213, "Introduccion a la Arquitectura de Sistemas", 1, 2, 1).
+materias(6214, "Analisis Matematico 2", 1, 2, 1).
+materias(6215, "Electricidad y Magnetismo", 1, 2, 1).
+materias(6221, "Analisis y Diseño de Algoritmos 2", 2, 2, 1).
+materias(6222, "Comunicacion de Datos 1", 2, 2, 1).
+materias(6223, "Probabilidades y Estadistica", 2, 2, 1).
+materias(6224, "Electronica Digital", 2, 2, 1).
+materias(6225, "Ingles", 2, 2, 1).
+materias(6311, "Programacion Orientada a Objetos", 1, 3, 1).
+materias(6312, "Estructuras de Almacenamiento de Datos", 1, 3, 1).
+materias(6313, "Metodologias de Desarrollo de Software", 1, 3, 1).
+materias(6314, "Arquitectura de Computadoras", 1, 3, 1).
+materias(6321, "Programacion Exploratoria", 2, 3, 0).
+materias(6322, "Base de Datos", 2, 3, 0).
+materias(6323, "Lenguajes de Programacion", 2, 3, 0).
+materias(6324, "Sistemas Operativos", 2, 3, 0).
+materias(6325, "Investigacion Operativa", 2, 3, 0).
+materias(6411, "Arquitectura de Computadoras y Tecnicas Digitales", 1, 4, 0).
+materias(6412, "Teoria de la Informacion", 1, 4, 0).
+materias(6413, "Comunicacion de Datos 2", 1, 4, 0).
+materias(6414, "Introduccion al Calculo Diferencial e Integral", 1, 4, 1).
+materias(6421, "Diseño de Sistemas de Software", 2, 4, 0).
+materias(6422, "Diseño de Compiladores 1", 2, 4, 0).
+materias(6511, "Ingenieria de Software", 1, 5, 0).
 
 %correlativas codigo | lista de correlativas
 correlativa(6111,[]).
@@ -71,16 +71,19 @@ correlativa(6421, [6311, 6322, 6324]).
 correlativa(6422, [6323]).
 correlativa(6511, [6421]).
 
-%info personal
+%materias que me gustan
+le_gusta(juan, 6111).
+le_gusta(juan, 6121).
+le_gusta(juan, 6122).
+le_gusta(juan, 6211).
+le_gusta(juan, 6311).
+le_gusta(juan, 6312).
+le_gusta(juan, 6321).
+
+%info personalplan_
 soy("juan").
 
-le_gusta(juan, programar).
-le_gusta(juan, ia).
-le_gusta(juan, machine learning).
-le_gusta(juan, matematica).
-le_gusta(juan, socializar).
-le_gusta(juan, hablar).
-le_gusta(juan, dirigir).
+
 
 %Reglas de materias
 
@@ -111,6 +114,12 @@ materias_aprobadas_fa(Result) :-
 materias_restantes_fa(Result) :-
     findall(Nombre, materias(_,Nombre,_,_,0), Result).
 
+%devuelve si te gusta una materia dado el nombre
+le_gusta_materia_nombre(Nombre) :-
+    writeln(Nombre),
+    materias(Codigo, Nombre, _, _, _),
+    writeln(Codigo),
+    le_gusta(juan, Codigo).
 
 %devuelve las materias que solo necesitas una correlativa
 materias_con_una_correlativa:-
@@ -127,7 +136,7 @@ materias_con_una_correlativa.
         
 
 plan_is:-
-    materias(CodigoMateria,NombreMateria,Cuatri, Anio),
+    materias(CodigoMateria,NombreMateria,Cuatri, Anio,_),
     write("Curso:"), 
     write(Anio),
     write(" Cua:"),
