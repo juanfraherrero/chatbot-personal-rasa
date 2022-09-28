@@ -31,24 +31,128 @@ nlu:
 - intent: dar_nombre
   examples: |
     - soy [analia](name)
-    - mi nombre es [juan](name)
-    - nombre igual a [francisco](name)
-    - me dicen [Pedor](name)
-    - jajajaj mi nombre es [jorge](name) 
-    - jajajja soy [analia](name)
+    - mi nombre es juan
+    - nombre igual a francisco
+    - me dicen Pedor
+    - jajajaj mi nombre es jorge 
+    - jajajja soy analia
 
 - intent: saludar_con_nombre
   examples: |
-    - hola , soy [Analia](name)
-    - buenas, soy [juan](name)
-    - hola buenas, soy [francisco](name)
-    - soy [Pedro](name) 
-    - me llamo [Jorge](name) 
-    - que haces, me llamo [Analia](name)
+    - hola , soy [analia](name)
+    - buenas, soy juan
+    - hola buenas, soy francisco
+    - soy Pedro 
+    - me llamo Jorge
+    - que haces, me llamo Analia
 
-- regex: name
-  examples: |   
-    - [a-z]{1,15}
+# - regex: name
+#   examples: |   
+#     - [a-z]{1,15}
+
+- lookup: name  
+  examples: |
+    - María
+    - Analia
+    - Juan
+    - José
+    - Carlos
+    - Jorge
+    - Luis
+    - Miguel
+    - Ana
+    - Héctor
+    - Ramón
+    - Silvia
+    - Rosa
+    - Roberto
+    - Óscar
+    - Daniel
+    - Norma
+    - Marta
+    - Mario
+    - Claudia
+    - Pedro
+    - Ricardo
+    - Graciela
+    - Raúl
+    - Pablo
+    - Eduardo
+    - Sergio
+    - Marcelo
+    - Julio
+    - Mónica
+    - Hugo
+    - Alberto
+    - Rubén
+    - Gustavo
+    - Susana
+    - Antonio
+    - Mirta
+    - Víctor
+    - Alicia
+    - Francisco
+    - Diego
+    - Patricia
+    - Nelida
+    - Juana
+    - Liliana
+    - Ángel
+    - Sandra
+    - Alejandro
+    - Laura
+    - Olga
+    - Andrea
+    - Claudio
+    - Elsa
+    - Walter
+    - Fernando
+    - Néstor
+    - Ramona
+    - Adriana
+    - Marcela
+    - Carmen
+    - Guillermo
+    - Manuel
+    - Lidia
+    - Teresa
+    - Cristian
+    - Martín
+    - Gabriela
+    - Alfredo
+    - Gladys
+    - Verónica
+    - Enrique
+    - Blanca
+    - Natalia
+    - Margarita
+    - Irma
+    - Beatriz
+    - Osvaldo
+    - Mercedes
+    - Javier
+    - Gabriel
+    - Horacio
+    - Alejandra
+    - César
+    - Rodolfo
+    - Dora
+    - Omar
+    - Elena
+    - Ángela
+    - Andrés
+    - Cristina
+    - Lorena
+    - Delia
+    - Isabel
+    - Stella
+    - Ariel
+    - Mariana
+    - Ernesto
+    - Leonardo
+    - Mariela
+    - Nilda
+    - Domingo
 
 #consultas
 - intent: consultar_cantidad_materias_carrera
@@ -105,14 +209,58 @@ nlu:
   examples: |   
     - [1-5]{1}
 
-- intent: consultar_gustos    
+- intent: consultar_gusta_materia    
   examples: |
-    - te gusta [programacion](gusto)
-    - te gusta [programar](gusto)
-    - a vos te gusta [ia](gusto)
-    - a vos te gusta la [ia](gusto)
-    - te copa la [matematica](gusto)
-    - sos de las personas a las que le gusta [socializar](gusto)
-    - vos sos de [hablar](gusto)
-    - te copa [dirigir](gusto)
-    - te gusta [comer](gusto)
+    - te gusta [introduccion a la programacion 1](materia)
+    - te gusta algebra 1
+    - a vos te gusta quimica
+    - te copa analisis matematico 1
+    - te gusta programacion exploratoria
+
+
+
+- lookup: materia
+  examples: |
+    - introduccion a la programacion 1
+    - analisis matematico 1
+    - algebra 1
+    - quimica
+    - ciencias de la computacion 1
+    - introduccion a la programacion 2
+    - algebra lineal
+    - fisica general
+    - matematica discreta
+    - ciencias de la computacion 2
+    - analisis y diseño de algoritmos 1
+    - introduccion a la arquitectura de sistemas
+    - analisis matematico 2
+    - electricidad y magnetismo
+    - analisis y diseño de algoritmos 2
+    - comunicacion de datos 1
+    - probabilidad y estadistica
+    - electronica digital
+    - programacion orientada a objetos
+    - estructura de alamcenamiento de datos
+    - metodologias de desarrollo de software
+    - arquitectura de computadoras
+    - programacion exploratoria
+    - base de datos
+    - lenguajes de programacion
+    - sistemas operativos
+    - investigacion operativa
+    - arquitectura de computadores y tecnicas digitales
+    - teoria de la informacion
+    - comunicacion de datos 2
+    - introduccion al calculo diferencial e integral
+    - diseño de sistemas de software
+    - diseño de compiladores
+    - ingenieria de software
+
+- intent: consultar_que_gusta_de_materia 
+  examples: |
+    - que te gusta de esa materia?
+    - que tiene esa materia que te gusta?
+    - que es lo que te gusta?
+    - que te interesa de esa materia?
+    - que es lo que te atrapa
+    - que te gusta de esta?
