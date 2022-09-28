@@ -12,6 +12,7 @@ from typing import Any, Text, Dict, List
 #
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import SlotSet
 from swiplserver import PrologMQI, PrologThread
 import os.path
 import json
@@ -66,7 +67,7 @@ class Action_consultar_legajo(Action): # listo
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         datos = OperarArchivo.cargarArchivo()
-        dispatcher.utter_message(text="mi legajo es: " + str(datos["datosPersonales"]["legajo"]))
+        dispatcher.utter_message(text="mi legajo es " + str(datos["datosPersonales"]["legajo"]))
         return []
 
 class Action_consultar_dni(Action): # listo
@@ -78,7 +79,7 @@ class Action_consultar_dni(Action): # listo
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         datos = OperarArchivo.cargarArchivo()
-        dispatcher.utter_message(text="mi dni es: " + str(datos["datosPersonales"]["dni"]))
+        dispatcher.utter_message(text="mi dni es " + str(datos["datosPersonales"]["dni"]))
         return []
 
 class Action_consultar_materias_aprobadas(Action): # listo
@@ -145,7 +146,7 @@ class Action_consultar_materias_de_anio(Action): # listo
         for materia in result:
             #sleep(0.3)
             dispatcher.utter_message(text = materia)  
-        dispatcher.utter_message(text="estas son todas las materias de la carrera")
+        dispatcher.utter_message(text=f"estas son todas las materias de {anio}")
         return []
 
 class Action_consultar_gusta_materia(Action): # 
@@ -156,8 +157,12 @@ class Action_consultar_gusta_materia(Action): #
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        materia = tracker.get_slot("materia")
-        print("la entidad es : " + str(materia))
+        print("la materia por entidad es: " + str(next(tracker.get_latest_entity_values("materia"), None)))
+        print("la materia por slot es:" + str(tracker.get_slot("materia")))
+        if (next(tracker.get_latest_entity_values("materia"), None) != None):
+            materia = tracker.get_slot("materia")
+        else:
+            materia = None
         if (materia):
             try:
                 materiaNew = OperarArchivo.cargarArchivo()["tranformacionesDeNombresMaterias"][materia.lower()]
@@ -168,11 +173,34 @@ class Action_consultar_gusta_materia(Action): #
                         result = prolog_thread.query_async_result()
                         if (result == True):
                             dispatcher.utter_message(text=f"sisi, me gusta {materia}")
+                            return [SlotSet("gusta", "True")]
                         else:
                             dispatcher.utter_message(text=f"nop, no me gusta {materia}")
+                            return [SlotSet("gusta", "False")]
             except:
                 dispatcher.utter_message(text=f"{materia} no es de Ingeniearia de Sistemas, si querés preguntame por otra materia")
+                return [SlotSet("gusta", "False")]
         else:
             dispatcher.utter_message(text=f"jajajja no te entendí, cómo?")
 
+class Action_consultar_gusta_materia(Action): # 
+
+    def name(self) -> Text:
+        return "action_consultar_que_gusta_de_materia"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        materia = tracker.get_slot("materia")
+        if (materia):
+            le_gusta = tracker.get_slot("gusta")
+            if (le_gusta == "True"):
+                respuesta = OperarArchivo.cargarArchivo()["marteriasGustaArreglo"][materia.lower()]
+                dispatcher.utter_message(text=f"{respuesta}")
+            else:
+                dispatcher.utter_message(text=f"nose, no me gusta {materia}")
+        else:
+            dispatcher.utter_message(text=f"???")
+
         return []
+#         return []

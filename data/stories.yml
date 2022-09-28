@@ -78,8 +78,9 @@ stories:
 
 - story: consultar_gusta_materia_path
   steps:
-  - intent: consultar_gustos
+  - intent: consultar_gusta_materia
   - action: action_consultar_gusta_materia
-
+  - intent: consultar_que_gusta_de_materia
+  - action: action_consultar_que_gusta_de_materia
 
   

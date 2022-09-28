@@ -2,6 +2,11 @@ from asyncore import read
 import json
 import os
 from swiplserver import PrologMQI, PrologThread
+from calculoDeHamming import get_name_materia_similar
+
+    
+
+    
 
 # x = input("ingrese un numero")
 # while (x != -1 ):
@@ -33,25 +38,34 @@ class OperarArchivo():
             retorno={}
         return retorno
 
+
+s2 = "programacion expl"
+materia = get_name_materia_similar(s2,OperarArchivo.cargarArchivo()["marteriasArreglo"])
+if(materia):
+    print("la cadena mas parecida es: ", materia)
+else:
+    print("no se encontro una cadena parecida")
+
+
 #anio = input("ingrese un anio")
-materia = input("ingrese una materia: ")
-materiaNew = OperarArchivo.cargarArchivo()["tranformacionesDeNombresMaterias"]
-try:
-    materiaNew = materiaNew[materia.lower()]
-    print(materiaNew)
-    with PrologMQI(port=8000) as mqi:
-        with mqi.create_thread() as prolog_thread:
-            prolog_thread.query_async("consult('/home/juan/Documentos/AAUniversidad/3Tercero/9-ProgramacionExploratoria/rasaProject/personal-bot/data/conocimiento_mis_materias.pl').", find_all=False)
-            prolog_thread.query_async(f"le_gusta_materia_nombre(\"{materiaNew}\").", find_all=False)
-            result = prolog_thread.query_async_result()
-            print(result)
+# materia = input("ingrese una materia: ")
+# materiaNew = OperarArchivo.cargarArchivo()["tranformacionesDeNombresMaterias"]
+# try:
+#     materiaNew = materiaNew[materia.lower()]
+#     print(materiaNew)
+#     with PrologMQI(port=8000) as mqi:
+#         with mqi.create_thread() as prolog_thread:
+#             prolog_thread.query_async("consult('/home/juan/Documentos/AAUniversidad/3Tercero/9-ProgramacionExploratoria/rasaProject/personal-bot/data/conocimiento_mis_materias.pl').", find_all=False)
+#             prolog_thread.query_async(f"le_gusta_materia_nombre(\"{materiaNew}\").", find_all=False)
+#             result = prolog_thread.query_async_result()
+#             print(result)
             #result = result[0]['Materias']
             #rint("las materias son:" + str(result)) 
     # for materia in result:
     #     #sleep(0.3)
     #     dispatcher.utter_message(text = materia)  
-except:
-    print("no se encontro la materia")
+# except:
+#     print("no se encontro la materia")
     #dispatcher.utter_message(text = "no se encontro la materia")
     
 
