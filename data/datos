@@ -82,14 +82,62 @@
         "Diseño de Compiladores 1",
         "Ingenieria de Software"      
         ],
-        "marteriasGustaArreglo":{
-            "introduccion a la programacion 1":"la verdad, que no tengo idea. Pero me atrapó la materia. En su momento, me pareció muy interesante.",
-            "ciencias de la computacion 1":"me encantó la materia. Me pareció muy interesante. Me gustó mucho la parte de la historia de la computación.",
-            "introduccion a la programacion 2":"me gustó mucho la materia. y en ese momento me gustó la estructura del pensamiento que nos hicieron desarrollar",
-            "ciencias de la computacion 2":"me fascinó. Me pareció muy interesante.",
-            "programacion orientada a objetos":"tremeensaaa, terminé bien de entender las bases de la programación orientada a objetos, excelente materia",
-            "estructura de almacenamiento de datos":"me copó bastante, conocimos muchas estructuras de indices que no conocía y tengo en el arsenal de estructuras",
-            "programacion exploratoria":"por ahora viene muy bien, viene cumpliendo mis expectativas. Siempre quise ver algo de prolog e inteligencia artificial"
+    "marteriasGustaArreglo":{
+        "introduccion a la programacion 1":"la verdad, que no tengo idea. Pero me atrapó la materia. En su momento, me pareció muy interesante.",
+        "ciencias de la computacion 1":"me encantó la materia. Me pareció muy interesante. Me gustó mucho la parte de la historia de la computación.",
+        "introduccion a la programacion 2":"me gustó mucho la materia. y en ese momento me gustó la estructura del pensamiento que nos hicieron desarrollar",
+        "ciencias de la computacion 2":"me fascinó. Me pareció muy interesante.",
+        "programacion orientada a objetos":"tremeensaaa, terminé bien de entender las bases de la programación orientada a objetos, excelente materia",
+        "estructura de almacenamiento de datos":"me copó bastante, conocimos muchas estructuras de indices que no conocía y tengo en el arsenal de estructuras",
+        "programacion exploratoria":"por ahora viene muy bien, viene cumpliendo mis expectativas. Siempre quise ver algo de prolog e inteligencia artificial"
+    },
+    "ejercicios":{
+        "Introduccion a la Programacion 1":{},
+        "Analisis Matematico 1":{},
+        "Algebra 1":{},
+        "Quimica":{},
+        "Ciencias de la Computacion 1":{},
+        "Introduccion a la Programacion 2":{},
+        "Algebra Lineal":{
+            "1":{
+                "2":{"resolucion":"https://raw.githubusercontent.com/juanfraherrero/rasa-personal-bot/main/data/media/fotoDeEjercicio.jpeg?token=GHSAT0AAAAAABYDRWNF77HYPACOV6WDUCK2Y2N3QRQ"},
+                "3":{"resolucion":"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/steve-carell-1585257967.jpg?crop=1xw:1xh;center,top&resize=480:*"}
+                
+            }
+        },
+        "Fisica General":{
+            "1":{
+                "2":{"resolucion":"https://raw.githubusercontent.com/juanfraherrero/rasa-personal-bot/main/data/media/fotoDeEjercicio.jpeg?token=GHSAT0AAAAAABYDRWNF77HYPACOV6WDUCK2Y2N3QRQ"},
+                "4":{"resolucion":"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/steve-carell-1585257967.jpg?crop=1xw:1xh;center,top&resize=480:*"}
+                
+            }
+        },
+        "Matematica Discreta":{},
+        "Ciencias de la Computacion 2":{},
+        "Analisis y Diseño de Algoritmos 1":{},
+        "Introduccion a la Arquitectura de Sistemas":{},
+        "Analisis Matematico 2":{},
+        "Electricidad y Magnetismo":{},
+        "Analisis y Diseño de Algoritmos 2":{},
+        "Comunicacion de Datos 1":{},
+        "Probabilidad y Estadistica":{},
+        "Electronica Digital":{},
+        "Ingles":{},
+        "Programacion Orientada a Objetos":{},
+        "Estructura de Almacenamiento de Datos":{},
+        "Metodologias de Desarrollo de Software":{},
+        "Arquitectura de Computadoras":{},
+        "Programacion Exploratoria":{},
+        "Base de Datos":{},
+        "Lenguajes de Programacion":{},
+        "Sistemas Operativos":{},
+        "Investigacion Operativa":{},
+        "Arquitectura de Computadores y Tecnicas Digitales":{},
+        "Teoria de la Informacion":{},
+        "Comunicacion de Datos 2":{},
+        "Introduccion al Calculo Diferencial e Integral":{},
+        "Diseño de Sistemas de Software":{},
+        "Diseño de Compiladores 1":{},
+        "Ingenieria de Software":{}
     }
-
 }

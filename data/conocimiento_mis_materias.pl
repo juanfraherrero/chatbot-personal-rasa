@@ -80,11 +80,6 @@ le_gusta(juan, 6311).
 le_gusta(juan, 6312).
 le_gusta(juan, 6321).
 
-%info personalplan_
-soy("juan").
-
-
-
 %Reglas de materias
 
 %imprime en pantalla una a una las materias
@@ -104,7 +99,6 @@ materias_totales_fa(Result) :-
 %devuelve una lista de las materias de un año
 materias_de_fa(X, Result) :-
     findall(Nombre, materias(_,Nombre,_,X,_), Result).
-
 
 %devuelve una lista de las materias aprobadas
 materias_aprobadas_fa(Result) :-

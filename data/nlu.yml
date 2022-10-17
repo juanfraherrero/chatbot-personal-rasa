@@ -1,15 +1,22 @@
 version: "3.1"
-
 nlu:
-#despedida
 - intent: goodbye
-  examples: | 
+  examples: |
     - chau
+    - chauu
+    - chauuu
+    - chachis
+    - chauchiss
+    - chchis
     - nos vemos
     - adios
     - saludos
+    - hasta luego
+    - hasta pronto
+    - hasta la vista
+    - hasta mañana
+    - hasta la proxima
 
-#agradece
 - intent: agradece
   examples: |
     - muchas gracias
@@ -17,40 +24,209 @@ nlu:
     - joya
     - genial
     - perfecto
-
-#saludos
+    - excelente
+    
 - intent: saludar_sin_nombre
   examples: |
     - hola
-    - buenas 
+    - hol
+    - holaa
+    - buenas
+    - buenass
+    - buens
     - hola buenas
     - que haces?
-    - todo bien? 
+    - que haces
+    - que hacs
+    - todo bien?
+    - todo bien
+    - todo ien
     - que andas haciendo?
-  
+    - que andas haciendo
+    - en que andas?
+    - que tal?
+    - que tal
+    - que tal, como estas?
+    - como estas?
+    - como estas, que tal?
+    - como estas, que haces?
+    - como estas, que andas haciendo?
+
+
 - intent: dar_nombre
   examples: |
     - soy [analia](name)
+    - soy juan
+    - sy juan
+    - soy pia
     - mi nombre es juan
-    - nombre igual a francisco
-    - me dicen Pedor
-    - jajajaj mi nombre es jorge 
-    - jajajja soy analia
+    - mi nombre es analia
+    - mi nombre es pia
+    - mi nmbre es pia
+    - me dicen Pedro
+    - me dicn juan
+    - me dcen pia
+    - me dicen pia
+    - me dicen analia
+    - me llamo rodrigo
+    - me llamo juan
+    - me lamo juan
+    - m llam juan
+    - me llamo pia
+    - me llamo analia
 
 - intent: saludar_con_nombre
   examples: |
     - hola , soy [analia](name)
     - buenas, soy juan
     - hola buenas, soy francisco
-    - soy Pedro 
+    - soy Pedro
     - me llamo Jorge
     - que haces, me llamo Analia
+    - hola soy [juan](name)
 
-# - regex: name
-#   examples: |   
-#     - [a-z]{1,15}
+- intent: consultar_legajo
+  examples: |
+    - cual es tu legajo?
+    - que legajo tenes?
+    - me darías tu legajo?
+    - pasame tu legajo porfavor
+    - necesito tu legajo
+    - cual es tu numero de legajo?
 
-- lookup: name  
+- intent: consultar_dni
+  examples: |
+    - cual es tu dni?
+    - que dni tenes?
+    - me darías tu dni?
+    - pasame tu dni porfavor
+    - necesito tu dni
+
+- intent: consultar_cantidad_materias_carrera
+  examples: |
+    - cuantas materias tiene tu carrera?
+    - que materias tiene tu carrera?
+    - cuantas materias tenes en tu carrera?
+    - cuantas materias tenes?
+    - cuales son tus materias de carrera?
+    - materias carrera?
+
+- intent: consultar_materias_de_anio
+  examples: |
+    - cuales materias tenes en [1](anio)?
+    - que materias cursas en [2](anio)?
+    - decime las materias que cursas en [3](anio)?
+    - tirame las materias de [4](anio)?
+    - contame las materias de [5](anio)?
+    - que materias tenes en [6](anio)?
+
+- intent: consultar_materias_aprobadas
+  examples: |
+    - cuales materias aprobaste?
+    - que materias aprobaste?
+    - pasame tus materias aprobadas?
+    - pasame las materias aprobadas porfavor
+    - necesito tus materias aprobadas
+    - que materias tenes aprobadas?
+    - que materias rendiste hasta ahora?
+    - materias rendidas?
+    - materias aprobadas?
+    - que materias ya las diste?
+
+- intent: consultar_materias_restantes
+  examples: |
+    - cuales materias te quedan?
+    - que materias te quedan?
+    - cuales materias te faltan dar?
+    - que materias te faltan dar?
+    - que  materias te restan?
+    - materias que te quedan?
+    - cuales materias no cursaste?
+
+- intent: consultar_gusta_materia
+  examples: |
+    - te gusta la materia [introduccion a la programacion 1](materia)
+    - te gusta la materia algebra lineal?
+    - a vos te gusta la materia quimica
+    - te copa analisis matematico 1
+    - te gusta la materia programacion exploratoria
+    - te copa la materia programacion exploratoria
+    - te gusta la materia electronica digital
+    - te gusta la materia base de datos
+    - te gusta la materia programacion orientada a objetos
+    - te gusta la materia sistemas operativos
+    - te gusta la materia arquitectura de computadoras
+    - te gusta la materia calculo diferencial
+    - te gusta la materia fisica
+    - te gusta la materia calculo integral
+    - te gusta la materia analisis matematico 2
+    - te gusta la materia introduccion a la programacion 2
+    - te gusta la materia [algebra lineal](materia)
+    - te gusta la materia [programacion exploratoria](materia)
+
+- intent: consultar_que_gusta_de_materia
+  examples: |
+    - que te parece esta materia?
+    - que te parece?
+    - que tiene esa materia que te gusta?
+    - que es lo que te gusta de esa materia?
+    - que te gusta de esa materia?
+    - que te gusta de esta materia?
+    - que te interesa de esa materia
+    - que te interesa de esa materia?
+    - te interesa?
+    - que es lo que te interesa de esa materia
+    - que es lo que te atrapa de esa materia?
+    - que es lo que te atrapa?
+    - te atrapa?
+    - te parece buena?
+
+- intent: consultar_me_cantas_un_tema
+  examples: |
+    - me cantas un tema?
+    - cantas un tema?
+    - sabes cantar un tema?
+    - cantame un tema
+    - me cantas una cancion
+    - cantame una cancion
+    - cantarias una cancion para mi?
+    - me canta tema
+    - cantame tema
+
+- intent: consultar_por_una_foto_de_mala_manera
+  examples: |
+    - pasame una foto ahora mismo
+    - quiero una foto
+    - pasame una foto ahora
+    - pasame una foto ya mismo
+    - quiero una foto ahora
+    - quiero una foto ya mismo
+    - necesito una foto ahora
+    - necesito una foto ahora mismo
+    - necesito una foto ya
+    - necesito una foto ya mismo
+    - necesito una foto
+
+- intent: consultar_por_una_foto_de_buena_manera
+  examples: |
+    - te puedo pedir una foto?
+    - te puedo pedir una foto
+    - me podrias pasar una foto?
+    - me podrias pasar una foto
+    - me podrias dar una foto?
+    - me podrias dar una foto
+    - me podrias mandar una foto?
+    - me podrias mandar una foto
+    - me podrias enviar una foto?
+    - me podrias enviar una foto
+    - te podria pedir una foto?
+    - te podria pedir una foto
+
+
+- regex: anio
+  examples: |
+    - [1-5]{1}
+- lookup: name
   examples: |
     - María
     - Analia
@@ -153,71 +329,14 @@ nlu:
     - Mariela
     - Nilda
     - Domingo
-
-#consultas
-- intent: consultar_cantidad_materias_carrera
-  examples: |
-    - cuantas materias tiene tu carrera?
-    - cuantas materias tenes en tu carrera?
-    - cuantas materias tenes?
-    - que cantidad de materias tenes?
-    - cantidad de materias por año?
-
-- intent: consultar_legajo
-  examples: |
-    - cual es tu legajo?
-    - que legajo tenes?
-    - me darías tu legajo?
-    - pasame tu legajo porfavor
-    - necesito tu legajo
-
-- intent: consultar_dni
-  examples: |
-    - cual es tu dni?
-    - que dni tenes?
-    - me darías tu dni?
-    - pasame tu dni porfavor
-    - necesito tu dni
-
-- intent: consultar_materias_aprobadas
-  examples: |
-    - cuales materias aprobaste?
-    - que materias tenes aprobadas?
-    - que materias rendiste hasta ahora?
-    - materias rendidas?
-    - materias aprobadas?
-    - que materias ya las diste?
-
-- intent: consultar_materias_restantes  
-  examples: |
-    - cuales materias te quedan?
-    - que materias te quedan?
-    - cuales materias te faltan dar?
-    - que materias te faltan dar?
-    - que  materias te restan?
-    - materias que te quedan?
-
-- intent: consultar_materias_de_anio  
-  examples: |
-    - cuales materias tenes en [1](anio)?
-    - que materias cursas en [2](anio)?
-    - decime las materias que cursas en [3](anio)?
-    - tirame las materias de [4](anio)?
-    - contame las materias de [5](anio)?
-
-- regex: anio
-  examples: |   
-    - [1-5]{1}
-
-- intent: consultar_gusta_materia    
-  examples: |
-    - te gusta [introduccion a la programacion 1](materia)
-    - te gusta algebra 1
-    - a vos te gusta quimica
-    - te copa analisis matematico 1
-    - te gusta programacion exploratoria
-
-
+    - pia
+    - pía
+    - david
+    - Martin
+    - tincho
+    - tin
+    - facundo
+    - facu
 
 - lookup: materia
   examples: |
@@ -256,11 +375,82 @@ nlu:
     - diseño de compiladores
     - ingenieria de software
 
-- intent: consultar_que_gusta_de_materia 
+# -------------------------------------- pruebas para grupo
+
+- intent: consultar_por_ejercicio
   examples: |
-    - que te gusta de esa materia?
-    - que tiene esa materia que te gusta?
-    - que es lo que te gusta?
-    - que te interesa de esa materia?
-    - que es lo que te atrapa
-    - que te gusta de esta?
+    - alguno tiene el inciso [1](inciso) del tp [2](tp) de la materia [algebra lineal](materia)?
+    - alguno tiene el inciso [2](inciso) del tp [8](tp) de la materia ingenieria de software?
+    - alguno tiene el inciso [4](inciso) del tp [6](tp) de la materia sistemas operativos?
+    - alguno tiene el inciso [6](inciso) del tp [5](tp) de la materia algebra lineal?
+    - alguno tiene el inciso [3](inciso) del tp [7](tp) de la materia investigacion operativa?
+    - alguno tiene el inciso [5](inciso) del tp [3](tp) de la materia algebra lineal?
+    - alguno tiene el inciso [3](inciso) del tp [1](tp) de la materia diseño de compiladores?
+    - alguno se copa y me pasa el inciso [2](inciso) del tp [1](tp) de la materia analisis matematico 1?
+    - alguno se copa y me pasa el inciso [1](inciso) del tp [5](tp) de la materia analisis matematico 1?
+    - alguno se copa y me pasa el inciso [6](inciso) del tp [7](tp) de programación orientada a objetos?
+    - che, alguno tiene el inciso [2](inciso) del tp [5](tp) de la materia programacion orientada a objetos?
+    - che juan, tenes el inciso [5](inciso) del tp [4](tp) de la materia comunicacion de datos 2?
+    - che juan, tenes el inciso [5](inciso) del tp [4](tp) de la materia investigacion operativa?
+    - che juan, tenes el inciso [5](inciso) del tp [4](tp) de comunicacion de datos 2?
+    - alguno tiene el inciso [3](inciso) del tp [1](tp) de diseño de compiladores?
+    - alguno se copa y me pasa el inciso [4](inciso) del tp [3](tp) de analisis matematico 1?
+    - alguno tiene el [4](inciso) del tp [3](tp) de analisis matematico 1?
+    - alguno tiene de analisis matematico 1 el inciso [2](inciso) del tp [4](tp)?
+
+- intent: consultar_por_ejercicio_otro_NO_lo_tiene
+  examples: |
+    - no, no lo tengo ese inciso 
+    - no, no lo tengo
+    - no, no lo tengo ese tp
+    - noup, no lo tengo
+    - no lo hice ese inciso
+    - no lo hice ese tp
+    - no lo hice
+    - no hay chance, es imposible ese inciso
+    - no hay chance, es imposible ese tp
+    - no hay chance, es imposible
+    - no lo tengo 
+
+- intent: consultar_por_ejercicio_otro_lo_tiene
+  examples: |
+    - si, lo tengo
+    - sisi, ese lo tengo
+    - sisi, ese lo hice
+    - sip, lo tengo
+    - sisi, lo hice
+    - si, lo hice
+    - si, lo tengo resuelto
+    - sisi, ese inciso era re facil
+    - sisi, ese tp era re facil
+    - sisi, una boludes ese inciso
+    - sisi, una boludes ese tp
+    - sisi, ahi te lo paso
+    - sisi, ahi te lo mando
+    - si amigo, ahi te lo mando
+    - si, ahi te lo paso
+    - ahi te lo paso
+    - ahi te lo mando
+    - ese inciso era re facil
+    - ese tp era re facil
+    - lo tengo resuelto, ahí te lo paso
+
+- intent: consultar_por_ejercicio_agradece
+  examples: |
+    - geniall, muchas gracias por el inciso
+    - geniall, muchas gracias por el tp
+    - geniall, muchas gracias
+    - gracias por el inciso
+    - gracias por el tp
+    - gracias por el inciso
+    - me sirve ese inciso
+    - me sirve ese tp
+    - me sirve
+
+- regex: inciso
+  examples: |
+    - [1-9]{1}
+
+- regex: tp
+  examples: |
+    - [1-9]{1}

@@ -7,8 +7,10 @@
 
 # This is a simple example for a custom action which utters "Hello World!"
 
+from cgitb import text
 from time import sleep
 from typing import Any, Text, Dict, List
+from unicodedata import name
 #
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -37,7 +39,6 @@ class OperarArchivo():
         return retorno
 
 class Action_consultar_cant_materias_carrera(Action): # listo
-
     def name(self) -> Text:
         return "action_consultar_cantidad_materias_carrera"
 
@@ -59,7 +60,6 @@ class Action_consultar_cant_materias_carrera(Action): # listo
 
 
 class Action_consultar_legajo(Action): # listo
-
     def name(self) -> Text:
         return "action_consultar_legajo"
 
@@ -71,7 +71,6 @@ class Action_consultar_legajo(Action): # listo
         return []
 
 class Action_consultar_dni(Action): # listo
-
     def name(self) -> Text:
         return "action_consultar_dni"
 
@@ -83,7 +82,6 @@ class Action_consultar_dni(Action): # listo
         return []
 
 class Action_consultar_materias_aprobadas(Action): # listo
-
     def name(self) -> Text:
         return "action_consultar_materias_aprobadas"
 
@@ -104,7 +102,6 @@ class Action_consultar_materias_aprobadas(Action): # listo
         return []
 
 class Action_consultar_materias_restantes(Action): # listo
-
     def name(self) -> Text:
         return "action_consultar_materias_restantes"
 
@@ -126,7 +123,6 @@ class Action_consultar_materias_restantes(Action): # listo
 
 
 class Action_consultar_materias_de_anio(Action): # listo
-
     def name(self) -> Text:
         return "action_consultar_materias_de_anio"
 
@@ -150,7 +146,6 @@ class Action_consultar_materias_de_anio(Action): # listo
         return []
 
 class Action_consultar_gusta_materia(Action): # 
-
     def name(self) -> Text:
         return "action_consultar_gusta_materia"
 
@@ -159,7 +154,7 @@ class Action_consultar_gusta_materia(Action): #
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         print("la materia por entidad es: " + str(next(tracker.get_latest_entity_values("materia"), None)))
         print("la materia por slot es:" + str(tracker.get_slot("materia")))
-        if (next(tracker.get_latest_entity_values("materia"), None) != None):
+        if (next(tracker.get_latest_entity_values("materia"), None) != None): #si no hay entidad materia desde las lookup tables, entonces lo saco del slot
             materia = tracker.get_slot("materia")
         else:
             materia = None
@@ -184,7 +179,6 @@ class Action_consultar_gusta_materia(Action): #
             dispatcher.utter_message(text=f"jajajja no te entendí, cómo?")
 
 class Action_consultar_gusta_materia(Action): # 
-
     def name(self) -> Text:
         return "action_consultar_que_gusta_de_materia"
 
@@ -195,12 +189,79 @@ class Action_consultar_gusta_materia(Action): #
         if (materia):
             le_gusta = tracker.get_slot("gusta")
             if (le_gusta == "True"):
-                respuesta = OperarArchivo.cargarArchivo()["marteriasGustaArreglo"][materia.lower()]
-                dispatcher.utter_message(text=f"{respuesta}")
+                try:
+                    respuesta = OperarArchivo.cargarArchivo()["marteriasGustaArreglo"][materia.lower()]
+                    dispatcher.utter_message(text=f"{respuesta}")
+                except(KeyError):
+                    print(KeyError, "line 202")
             else:
                 dispatcher.utter_message(text=f"nose, no me gusta {materia}")
         else:
             dispatcher.utter_message(text=f"???")
 
         return []
-#         return []
+
+class Action_consultar_me_cantas_un_tema(Action): # 
+    def name(self) -> Text:
+        return "action_consultar_me_cantas_un_tema"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        #print(tracker.latest_message["metadata"])
+
+        nombre = tracker.get_slot("name")
+        dispatcher.utter_message(response = "utter_me_cantas_un_tema", nombre=nombre)#, audio="https://github.com/juanfraherrero/rasa-personal-bot/blob/main/data/audioMio.ogg")
+        return []
+
+# ---------------------------------------prueba grupal
+
+class Action_consultar_por_ejercicio(Action): # 
+    def name(self) -> Text:
+        return "action_consultar_por_ejercicio"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        print(tracker.latest_message["metadata"])
+
+        print(tracker.latest_message["metadata"]["message"]["from"]["id"])
+
+        if(tracker.latest_message["metadata"]["message"]["from"]["id"] == 1387819927 and (tracker.latest_message["metadata"]["message"]["chat"]["type"] == "group" or tracker.latest_message["metadata"]["message"]["chat"]["type"] == "supergroup" )):
+            print("no me respondo a mi mismo en grupos")
+            return[]
+        
+        
+        # print("la materia por entidad es: " + str(next(tracker.get_latest_entity_values("materia"), None)))
+        # print("el tp de la materia es:" + str(next(tracker.get_latest_entity_values("tp"), None)))
+        # print("el inciso de la materia es:" + str(next(tracker.get_latest_entity_values("inciso"), None)))
+        
+        # tp = tracker.get_slot("tp")
+        # inciso = tracker.get_slot("inciso")
+        tp = next(tracker.get_latest_entity_values("tp"), None)
+        inciso = next(tracker.get_latest_entity_values("inciso"), None)
+
+        if (next(tracker.get_latest_entity_values("materia"), None) != None):
+            materia = tracker.get_slot("materia")
+        else:
+            materia = None
+
+        # print(materia)
+        # print(tp)
+        # print(inciso)
+        
+        if (materia):
+            try:
+                datos = OperarArchivo.cargarArchivo()
+                materiaLower = datos["tranformacionesDeNombresMaterias"][materia.lower()]
+                ejercicio = datos["ejercicios"][materiaLower][tp][inciso]["resolucion"]
+                dispatcher.utter_message(text="sisi, ahi te lo paso", image = ejercicio)
+            except:
+                dispatcher.utter_message(response="utter_no_tengo_ejercicio") #, tp=tp,inciso=inciso, materia=materia)
+        else:
+            dispatcher.utter_message(response = "utter_no_conozco_materia")
+        return []
+
+

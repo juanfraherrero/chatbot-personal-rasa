@@ -83,4 +83,82 @@ stories:
   - intent: consultar_que_gusta_de_materia
   - action: action_consultar_que_gusta_de_materia
 
-  
+- story: consultar_me_cantas_un_tema_path
+  steps:
+  - intent: consultar_me_cantas_un_tema
+  - action: action_consultar_me_cantas_un_tema
+
+- story: consultar_por_una_foto_de_buena_manera_path
+  steps:
+  - intent: consultar_por_una_foto_de_buena_manera
+  - action: utter_pedir_foto_buena_manera
+
+- story: consultar_por_una_foto_de_mala_manera_path
+  steps:
+  - intent: consultar_por_una_foto_de_mala_manera
+  - action: utter_pedir_foto_mala_manera
+
+###---------------------------------grupales
+
+- story: consultar_por_ejercicio_path
+  steps:
+  - intent: consultar_por_ejercicio
+  - action: action_consultar_por_ejercicio
+
+- story: consultar_por_ejercicio_otro_lo_tiene_path
+  steps:
+  - intent: consultar_por_ejercicio_otro_lo_tiene
+  # - action: action_consultar_por_ejercicio_otro_lo_tiene
+
+- story: consultar_por_ejercicio_otro_NO_lo_tiene_path
+  steps:
+  - intent: consultar_por_ejercicio_otro_NO_lo_tiene
+  # - action: action_consultar_por_ejercicio_otro_NO_lo_tiene
+
+- story: consultar_por_ejercicio_agradece_path
+  steps:
+  - intent: consultar_por_ejercicio_agradece
+  #- action: action_consultar_por_ejercicio_agradece
+
+####
+
+
+- story: interactive_story_1
+  steps:
+  - intent: consultar_gusta_materia
+    entities:
+    - materia: algebra lineal
+  - slot_was_set:
+    - materia: algebra lineal
+  - action: action_consultar_gusta_materia
+  - slot_was_set:
+    - gusta: 'False'
+  - intent: consultar_que_gusta_de_materia
+  - action: action_consultar_que_gusta_de_materia
+  - intent: consultar_gusta_materia
+    entities:
+    - materia: programacion exploratoria
+  - slot_was_set:
+    - materia: programacion exploratoria
+  - action: action_consultar_gusta_materia
+  - slot_was_set:
+    - gusta: 'True'
+  - intent: consultar_que_gusta_de_materia
+  - action: action_consultar_que_gusta_de_materia
+
+- story: interactive_story_2
+  steps:
+  - intent: consultar_por_ejercicio
+    entities:
+    - inciso: '3'
+    - tp: '1'
+    - materia: analisis matematico 1
+  - slot_was_set:
+    - anio: '1'
+  - slot_was_set:
+    - materia: analisis matematico 1
+  - slot_was_set:
+    - inciso: '1'
+  - slot_was_set:
+    - tp: '1'
+  - action: action_consultar_por_ejercicio

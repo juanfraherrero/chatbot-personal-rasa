@@ -1,34 +1,49 @@
 version: '3.1'
 intents:
-  - goodbye
-  - agradece
-  - saludar_sin_nombre
-  - dar_nombre
-  - saludar_con_nombre
-  - consultar_cantidad_materias_carrera
-  - consultar_legajo
-  - consultar_dni
-  - consultar_materias_aprobadas
-  - consultar_materias_restantes
-  - consultar_materias_de_anio
-  - consultar_gusta_materia
-  - consultar_que_gusta_de_materia
+- agradece
+- consultar_cantidad_materias_carrera
+- consultar_dni
+- consultar_gusta_materia
+- consultar_legajo
+- consultar_materias_aprobadas
+- consultar_materias_de_anio
+- consultar_materias_restantes
+- consultar_que_gusta_de_materia
+- dar_nombre
+- goodbye
+- saludar_con_nombre
+- saludar_sin_nombre
+- consultar_me_cantas_un_tema
+- consultar_por_una_foto_de_mala_manera
+- consultar_por_una_foto_de_buena_manera
+- consultar_por_ejercicio_agradece
+- consultar_por_ejercicio_otro_lo_tiene
+- consultar_por_ejercicio_otro_NO_lo_tiene
+- consultar_por_ejercicio
 
 actions:
-  - action_consultar_cantidad_materias_carrera
-  - action_consultar_legajo
-  - action_consultar_dni
-  - action_consultar_materias_aprobadas
-  - action_consultar_materias_restantes
-  - action_consultar_materias_de_anio
-  - action_consultar_gusta_materia
-  - action_consultar_que_gusta_de_materia
-
+- action_consultar_cantidad_materias_carrera
+- action_consultar_dni
+- action_consultar_gusta_materia
+- action_consultar_legajo
+- action_consultar_materias_aprobadas
+- action_consultar_materias_de_anio
+- action_consultar_materias_restantes
+- action_consultar_que_gusta_de_materia
+- utter_pedir_nombre
+- utter_que_necesita
+- action_consultar_me_cantas_un_tema
+- action_consultar_por_ejercicio_agradece
+- action_consultar_por_ejercicio_otro_lo_tiene
+- action_consultar_por_ejercicio_otro_NO_lo_tiene
+- action_consultar_por_ejercicio
 entities:
-  - name
-  - anio
-  - materia
-  - gusta
+- materia
+- name
+- anio
+- gusta
+- inciso
+- tp
 
 slots:
   name:
@@ -51,47 +66,68 @@ slots:
     mappings:
     - type: from_entity
       entity: gusta
-      defaul_value: False
+  inciso:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: inciso
+  tp:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: tp
 
-#verificar si funciona
 responses:
   utter_please_rephrase:
-  - text: "No te entendí, podés repetirlo de otra manera?"
-
+  - text: No te entendí, podés repetirlo de otra manera?
   utter_goodbye:
-  - text: "nos vemos {name}"
-  - text: "chau chau {name}"
-  - text: "chauuuu {name}"
-  - text: "saludoss {name}"
-  
+  - text: nos vemos {name}
+  - text: chau chau {name}
+  - text: chauuuu {name}
+  - text: saludoss {name}
   utter_goodbye_no_name:
-  - text: "nos vemos"
-  - text: "chau chau"
-  - text: "chauuuu"
-  - text: "saludoss"
-  
+  - text: nos vemos
+  - text: chau chau
+  - text: chauuuu
+  - text: saludoss
   utter_agradece:
-  - text: "genial {name}, algo más?"
-  - text: "algo más {name}?"
-  - text: "joya"
-
+  - text: genial {name}, algo más?
+  - text: algo más {name}?
+  - text: joya
   utter_agradece_no_name:
-  - text: "genial"
-  - text: "algo más?"
-  - text: "joya"
-
+  - text: genial
+  - text: algo más?
+  - text: joya
   utter_pedir_nombre:
-  - text: "perdoname, no me funciona bien el celu y no puedo agendar gente, quién sos?"
-  - text: "no me funca el celu, no puedo agendar gente, vos sos?"
-  - text: "buenas, no puedo agendar nombres, quién sos?"
-  - text: "holaa, vos sos?"
-  - text: "como va? quién sos?"
-
+  - text: perdoname, no me funciona bien el celu y no puedo agendar gente, quién sos?
+  - text: no me funca el celu, no puedo agendar gente, vos sos?
+  - text: buenas, no puedo agendar nombres, quién sos?
+  - text: holaa, vos sos?
+  - text: como va? quién sos?
   utter_que_necesita:
-  - text: "holaa {name}, que necesitas?"
-  - text: "ahora sí, que necesitas {name}?"
-  - text: "hola {name}, que pasó?"
-  - text: "que haces {name}, que me querés pedir?"
+  - text: holaa {name}, que necesitas?
+  - text: ahora sí, que necesitas {name}?
+  - text: hola {name}, que pasó?
+  - text: que haces {name}, que me querés pedir?
+  utter_me_cantas_un_tema:    
+  - text: jajajjaja ni loco te canto algo {nombre}!!
+    custom:
+      sticker: "https://i.gifer.com/33XC.gif"
+  utter_pedir_foto_buena_manera:
+  - text: dalee, ahí te mando una foto
+    image: "https://thumbs.dreamstime.com/b/gui%C3%B1o-del-hombre-joven-10974743.jpg"
+  - text: si, ya te mando una foto
+    image: "https://thumbs.dreamstime.com/b/gui%C3%B1o-del-hombre-joven-10974743.jpg"
+  utter_pedir_foto_mala_manera:
+  - text: bueno cheee, te noto acelerado, si querés la foto me la vas a tener que pedir bien
+  # - text: bueno che, te la paso, la próxima pedila mejor
+  #   custom:
+  #     image: "https://raw.githubusercontent.com/juanfraherrero/rasa-personal-bot/main/data/media/fotoMalaOnda.jpeg?token=GHSAT0AAAAAABYDRWNEEM7GU7IWQFTC3XD4Y2J4ZLA"
+  utter_no_conozco_materia:
+  - text: no conozco esa materia
+  - text: no conozco esa materia, seguro que se escribe asi?
+  utter_no_tengo_ejercicio:
+  - text: no, no lo tengo
 
 session_config:
   session_expiration_time: 60
