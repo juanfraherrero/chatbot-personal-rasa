@@ -33,3 +33,14 @@ when the train is finished, run the next commands for test it
 rasa shell
 ```
 After this command finish, in the terminal should appear a "type:" or something as this where you can insert your intention and talk to the chatbot.
+
+## Usage with Telegram
+
+To use it in Telegram, then you shoul do some modifications after the installation of rasa.
+Find where your virtual enviroment is installed, inside that directory go to "PathOfYourEnvirment"/RASA/Lib/site-packages/rasa/core/channels/channel.py in windows and "PathOfYourEnvirment"/lib/python3.8/site-packages/rasa/core/channels in linux. Then inside this python file search for the function "get_metadata()" and change the content to this
+```python
+def get_metadata(self, request: Request) -> Optional[Dict[Text, Any]]:
+       metadata = request.json
+       return metadata
+``` 
+
