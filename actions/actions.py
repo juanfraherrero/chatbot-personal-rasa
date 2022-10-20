@@ -66,8 +66,13 @@ class Action_consultar_legajo(Action): # listo
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        datos = OperarArchivo.cargarArchivo()
-        dispatcher.utter_message(text="mi legajo es " + str(datos["datosPersonales"]["legajo"]))
+
+        nombre = tracker.get_slot("name") 
+        if(nombre.lower() == "analia"):   
+            datos = OperarArchivo.cargarArchivo()
+            dispatcher.utter_message(text="mi legajo es " + str(datos["datosPersonales"]["legajo"]))
+        else:
+            dispatcher.utter_message(text=f"perdón {nombre}, pero no te puedo dar mi legajo")
         return []
 
 class Action_consultar_dni(Action): # listo
@@ -77,8 +82,13 @@ class Action_consultar_dni(Action): # listo
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        datos = OperarArchivo.cargarArchivo()
-        dispatcher.utter_message(text="mi dni es " + str(datos["datosPersonales"]["dni"]))
+        
+        nombre = tracker.get_slot("name") 
+        if(nombre.lower() == "analia"):   
+            datos = OperarArchivo.cargarArchivo()
+            dispatcher.utter_message(text="mi dni es " + str(datos["datosPersonales"]["dni"]))
+        else:
+            dispatcher.utter_message(text=f"perdoname {nombre}, pero preferiría no darte mi dni")
         return []
 
 class Action_consultar_materias_aprobadas(Action): # listo

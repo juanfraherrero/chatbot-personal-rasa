@@ -1,3 +1,7 @@
 .rasa/
 models/
 credenciales/
+data/datosDePrueba.json
+data/diagrama.png
+data/pruebas.py
+data/tareas.txt

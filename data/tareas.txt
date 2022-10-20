@@ -1,11 +1,4 @@
+Verificar el tema del trato general y personalizado
 
-para el infore que 
-
-mantegna contexto -> una story de 2 intents
-guarde un nomobre y al saludar responda el nombre
-
--- un ejemplo que muestre un trato especial -> que en las actions haya algún que otro if para determinar una solución
--- un ejemplo de computación afectiva sin preguntar como estás
-
---como hacerlo si estamos interactuando en grupo
+Añadir el caso de los mensajes grupales
 
